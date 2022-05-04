@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block 'content' %}
+<div class="container bg-pudin px-5 py-4">
+    <div class="row">
+        <div class="h-100 p-5 text-white bg-pudin2 mt-5 rounded-3">
+            <h3>Nuestros Flanes</h3>
+            <p>Onlyflans nace el año 2022 buscando entregar flanes de calidad.</p>
+            <a href="{% url 'acerca' %}" class="btn btn-caramel">Conoce más</a>
+        </div>
+
+        {% for flan in public_flans %}
+        <div class="col-12 col-md-6 col-lg-4 col-xl-3 my-5 d-flex justify-content-center">
+            <div class="card" style="width: 18rem;">
+                <img src="{{ flan.img_url }}" class="d-block img-fluid w-100"
+                    alt="Al rico flan">
+                <div class="card-body">
+                  <h5 class="card-title" id="hola">{{ flan.name }}</h5>
+                  <p class="card-text">{{ flan.description }}</p>
+                </div>
+              </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block 'content' %}
+<div class="container bg-pudin px-5 py-4">
+    <div class="text-center pb-3">
+        <h3>Iniciar Sesión</h3>
+    </div>
+    <form action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+
+        {% if form.errors %}
+        <p>Usuario y contraseña no corresponden. Inténtelo de nuevo por favor.</p>
+        {% endif %}
+
+        {% if next %}
+            {% if user.is_authenticated %}
+            <p>Tu cuenta no tiene acceso a esta página. Para proceder, inicie sesión con una cuenta que tenga acceso.</p>
+            {% else %}
+            <p>Por favor inicie sesión para ver esta pagina.</p>
+            {% endif %}
+        {% endif %}
+
+        <div class="pb-3 text-center">
+            <label for="{{ form.username.id_for_label }}" class="form-label">
+                {{ form.username.label_tag }}
+            </label>
+            <div>
+                {{ form.username }}
+            </div>
+        </div>
+        <div class="pb-3 text-center">
+            <label for="{{ form.password.id_for_label }}" class="form-label">
+                {{ form.password.label_tag }}
+            </label>
+            <div>
+                {{ form.password }}
+            </div>
+        </div>
+        <div class="text-center">
+            <input class="btn btn-pudin" type="submit" value="Ingresar">
+        </div>
+    </form>
+</div>
+{% endblock %}

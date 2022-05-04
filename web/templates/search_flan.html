@@ -1,0 +1,12 @@
+<div class="text">
+    <p class="pb-1 fs-3">Encuentra tu flan:</p>
+    <form action="{% url 'buscadorflan' %}" method="post">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-12 col-md-10">
+                <input class="form-control" type="search" placeholder="¿Qué tipo de flan buscas hoy?" aria-label="Encuentra tu flan" name="buscador">
+            </div>
+            <button class="col-12 col-md-2 col-lg-2 col-xl-2 btn btn-pudin" id="search" type="submit">Buscar</button>
+        </div>
+    </form>
+</div>
